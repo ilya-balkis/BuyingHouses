@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>User Profile Page</title>
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <main role="main">
+        <div class="container">
+
+            <div class="col-md-4 d-xs-block d-md-flex d-sm-block d-lg-flex justify-content-center">
+                <div class="d-inline">
+                    <div class="d-flex">
+                        <img width="33" src="/static/images/lock.svg" alt="">
+                        <div class="center">
+                            <div class="block">
+                                <div class="d-flex">
+                                    <b class="mr-1">Login:</b>
+                                    <label th:text="${user.getUserName()}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <img class="mt-1" width="33" src="/static/images/mail.svg" alt="">
+                        <div class="center">
+                            <div class="block">
+                                <div class="d-flex">
+                                    <b class="mr-1">E-mail:</b>
+                                    <label th:text="${user.getEmail()}"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-margin row">
+                <div th:each="accommodation : ${accommodations}"
+                     th:if="${!accommodation.isWaited() && accommodation.getOwner().getId() == user.getId()}"
+                     class="col-md-4 col-sm-6">
+                    <div class="card mb-4 shadow-sm">
+
+                        <div th:insert="blocks/accommodationInformation :: accommodationInformation"></div>
+
+                        <div class="p-2">
+                            <div class="d-flex justify-content-center mb-2">
+                                <table>
+                                    <td>
+                                        <p class="d-inline text-muted">Confirmed:</p>
+                                        <img width="17" src="/static/images/tick.svg" alt="">
+                                    </td>
+                                </table>
+                            </div>
+                        </div>
+
+                        <form class="px-2 pb-2" th:action="@{/profile/delete}" method="post">
+                            <input type="hidden" name="accommodationName" th:value="${accommodation.getName()}">
+                            <input type="hidden" name="fileName" th:value="${accommodation.getFileName()}">
+                            <button class="btn btn-danger btn-block" type="submit" name="delete">Delete</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div th:each="accommodation : ${accommodations}"
+                     th:if="${accommodation.isWaited() && accommodation.getOwner().getId() == user.getId()}"
+                     class="col-md-4 col-sm-6">
+                    <div class="card mb-4 shadow-sm">
+
+                        <div th:insert="blocks/accommodationInformation :: accommodationInformation"></div>
+
+                        <div class="p-2">
+                            <div class="d-flex justify-content-center mb-2">
+                                <table>
+                                    <td>
+                                        <p class="d-inline text-muted">Confirmed:</p>
+                                        <img width="17" src="/static/images/cross.svg" alt="">
+                                    </td>
+                                </table>
+                            </div>
+                        </div>
+
+                        <form class="px-2 pb-2" th:action="@{/profile/delete}" method="post">
+                            <input type="hidden" name="accommodationName" th:value="${accommodation.getName()}">
+                            <input type="hidden" name="fileName" th:value="${accommodation.getFileName()}">
+                            <button class="btn btn-danger btn-block" type="submit" name="delete">Delete</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:insert="blocks/scripts :: scripts"></div>
+
+</body>
+</html>

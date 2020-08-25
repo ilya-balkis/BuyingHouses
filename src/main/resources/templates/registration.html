@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/welcomeStyle.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>Sign Up Page</title>
+</head>
+<body>
+
+    <video autoplay loop muted class="bg-video" id="bg-video">
+        <source src="/static/video/registration.mp4" type="video/mp4"/>
+    </video>
+
+    <main role="main">
+        <div class="container welcome">
+            <div class="row">
+                <div class="col-md-4 col-md-4 bg-light pt-3 pb-3 pl-3 pr-3 rounded">
+                    <form th:action="@{/registration}" method="post" enctype="multipart/form-data">
+                        <div class="text-center">
+                            <img width="40" src="/static/images/logo.svg" alt="">
+                            <span id="Logo-1" class="mb-0 h4 pt-1">Buying</span>
+                            <span id="Logo-2" class="mb-0 h4 pt-1">Houses</span>
+                        </div>
+
+                        <label class="bottomLine">E-mail</label>
+                        <input class="form-control" th:classappend="${userError} ? 'is-invalid' : ''"
+                               name="email" type="email" placeholder="e-mail" autofocus required>
+                        <div class="invalid-feedback">
+                            <span th:text="${emailError}"></span>
+                            <span th:text="${userError}"></span>
+                        </div>
+
+                        <label class="bottomLine">Password</label>
+                        <input class="form-control" th:classappend="${passwordError} ? 'is-invalid' : ''" name="password" type="password" placeholder="Password" autofocus required>
+                        <div class="invalid-feedback">
+                            <span th:text="${passwordError}"></span>
+                        </div>
+
+                        <label class="bottomLine">Repeated password</label>
+                        <input class="form-control" th:classappend="${repeatedPasswordError} ? 'is-invalid' : ''" name="repeatedPassword" type="password" placeholder="Repeat password" autofocus required>
+                        <div class="invalid-feedback">
+                            <p th:text="${repeatedPasswordError}"></p>
+                        </div>
+
+                        <label class="bottomLine">Login</label>
+                        <input class="form-control" th:classappend="${userError} ? 'is-invalid' : ''" name="userName" type="text" placeholder="Login" autofocus required>
+                        <div class="invalid-feedback">
+                            <span th:text="${userError}"></span>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-warning btn-block mt-2" type="submit" name="registration">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Sale Accommodation Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <main role="main">
+        <div class="container">
+            <form method="post" th:action="@{/payment/{id}(id=${accommodation.getId()})}">
+                <div class="row">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img height="200" width="100%" th:src="@{/img/{id}(id=${accommodation.getFileName()})}" alt="">
+                            <div class="p-2">
+                                <div class="d-flex justify-content-center mb-2">
+                                    <table>
+                                        <tr class="text-center">
+                                            <td colspan="2"><b id="Name" class="text-uppercase" th:text="${accommodation.getName()}"></b></td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td colspan="2"><span id="Cost" class="text-success" th:text="${accommodation.getCost()} + '$'"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><p class="d-inline text-muted">Type: </p><span class="mr-2" th:text="${accommodation.getType()}"></span></td>
+                                            <td><p class="d-inline text-muted">Square: </p><span th:text="${accommodation.getSquare()}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><p class="d-inline text-muted">City: </p><span class="mr-2" th:text="${accommodation.getCity()}"></span></td>
+                                            <td><p class="d-inline text-muted">Furnished: </p>
+                                                <img th:if="${accommodation.isFurniture()} == true" width="17" src="images/tick.svg" alt="">
+                                                <img th:if="${accommodation.isFurniture()} == false" width="17" src="images/cross.svg" alt="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><p class="d-inline text-muted">Rooms: </p><span class="mr-2" th:text="${accommodation.getAmountOfRooms()}"></span></td>
+                                            <td><p class="d-inline text-muted">Internet: </p>
+                                                <img th:if="${accommodation.isInternet()} == true" width="17" src="images/tick.svg" alt="">
+                                                <img th:if="${accommodation.isInternet()} == false" width="17" src="images/cross.svg" alt="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p class="d-inline text-muted">Owner: </p><span th:text="${accommodation.getOwner().getUserName()}"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><p class="d-inline text-muted">E-mail: </p><span th:text="${accommodation.getOwner().getEmail()}"></span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <input type="hidden" name="accommodationName" th:value="${accommodation.getName()}">
+                                    <input type="hidden" name="fileName" th:value="${accommodation.getFileName()}">
+                                    <button class="btn btn-warning btn-block" type="submit" name="buy">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6  d-flex justify-content-center">
+                        <div>
+                            <div class="wrap">
+                                <div class="BankCard">
+                                    <div class="position-relative" id="front">
+                                        <img class="position-absolute" width="100%" src="/static/images/product-visa-front.fw.png" alt="">
+                                        <img class="position-absolute" width="100%" src="/static/images/card-front-background.fw.png" alt="">
+
+                                        <div id="input-block" class="position-absolute d-flex justify-content-around">
+                                            <input id="input-1" type="text" pattern="[0-9]{4}" placeholder="XXXX" title="XXXX" required>
+                                            <input id="input-2" type="text" pattern="[0-9]{4}" placeholder="XXXX" title="XXXX" required>
+                                            <input id="input-3" type="text" pattern="[0-9]{4}" placeholder="XXXX" title="XXXX" required>
+                                            <input id="input-4" type="text" pattern="[0-9]{4}" placeholder="XXXX" title="XXXX" required>
+                                        </div>
+
+                                        <div id="input-date" class="position-absolute">
+                                            <input id="input-5" type="number" min="1" max="31" placeholder="DD" required>
+                                            <b>/</b>
+                                            <input id="input-6" type="number" min="1" max="12" placeholder="MM" required>
+                                        </div>
+
+                                        <div  id="input-name" class="position-absolute">
+                                            <input id="input-7" type="text" pattern="[A-Z]+\s[A-Z]+" placeholder="NAME SURNAME" title="NAME SURNAME" required>
+                                        </div>
+
+                                    </div>
+                                    <div id="back"><span>
+                                    <img class="position-absolute" width="100%" src="/static/images/visa-back.png" alt="">
+
+                                    <div id="cvc/cvv" class="position-absolute">
+                                        <input id="input-8" type="text" pattern="[0-9]{3}" placeholder="CVC/CVV" title="XXX" required>
+                                    </div>
+
+                                </span></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <img id="arrow" width="250" src="/static/images/left-arrow.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div th:insert="blocks/scripts :: scripts"></div>
+
+</body>
+</html>

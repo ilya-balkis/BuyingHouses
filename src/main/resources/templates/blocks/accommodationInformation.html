@@ -1,0 +1,41 @@
+<div th:fragment="accommodationInformation">
+
+    <img height="200" width="100%" th:src="@{/img/{id}(id=${accommodation.getFileName()})}" alt="">
+
+    <div class="p-2">
+        <div class="d-flex justify-content-center mb-2">
+            <table>
+                <tr class="text-center">
+                    <td colspan="2"><b id="Name" class="text-uppercase" th:text="${accommodation.getName()}"></b></td>
+                </tr>
+                <tr class="text-center">
+                    <td colspan="2"><span id="Cost" class="text-success" th:text="${accommodation.getCost()} + '$'"></span></td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">Type: </p><span class="mr-2" th:text="${accommodation.getType()}"></span></td>
+                    <td><p class="d-inline text-muted">Square: </p><span th:text="${accommodation.getSquare()}"></span></td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">City: </p><span class="mr-2" th:text="${accommodation.getCity()}"></span></td>
+                    <td><p class="d-inline text-muted">Furnished: </p>
+                        <img th:if="${accommodation.isFurniture()} == true" width="17" src="/static/images/tick.svg" alt="">
+                        <img th:if="${accommodation.isFurniture()} == false" width="17" src="/static/images/cross.svg" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">Rooms: </p><span class="mr-2" th:text="${accommodation.getAmountOfRooms()}"></span></td>
+                    <td><p class="d-inline text-muted">Internet: </p>
+                        <img th:if="${accommodation.isInternet()} == true" width="17" src="/static/images/tick.svg" alt="">
+                        <img th:if="${accommodation.isInternet()} == false" width="17" src="/static/images/cross.svg" alt="">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p class="d-inline text-muted">Owner: </p><span th:text="${accommodation.getOwner().getUserName()}"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><p class="d-inline text-muted">E-mail: </p><span th:text="${accommodation.getOwner().getEmail()}"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,198 @@
+@keyframes pulse-button {
+    from {
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-left: 21px;
+        padding-right: 21px;
+
+        font-size: 18px;
+    }
+
+    5% {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 22px;
+        padding-right: 22px;
+
+        font-size: 19px;
+    }
+
+    10% {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 23px;
+        padding-right: 23px;
+
+        font-size: 20px;
+    }
+
+    15% {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        font-size: 21px;
+    }
+
+    20% {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        font-size: 22px;
+    }
+
+    25% {
+        padding-top: 19px;
+        padding-bottom: 19px;
+        padding-left: 26px;
+        padding-right: 26px;
+
+        font-size: 23px;
+    }
+
+    30% {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 27px;
+        padding-right: 27px;
+
+        font-size: 24px;
+    }
+
+    35% {
+        padding-top: 21px;
+        padding-bottom: 21px;
+        padding-left: 28px;
+        padding-right: 28px;
+
+        font-size: 25px;
+    }
+
+    40 % {
+        padding-top: 22px;
+        padding-bottom: 22px;
+        padding-left: 29px;
+        padding-right: 29px;
+
+        font-size: 26px;
+    }
+
+    45% {
+        padding-top: 23px;
+        padding-bottom: 23px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        font-size: 27px;
+    }
+
+
+    50% {
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 31px;
+        padding-right: 31px;
+
+        font-size: 28px;
+    }
+
+    55% {
+        padding-top: 23px;
+        padding-bottom: 23px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        font-size: 27px;
+    }
+
+    60% {
+        padding-top: 22px;
+        padding-bottom: 22px;
+        padding-left: 29px;
+        padding-right: 29px;
+
+        font-size: 26px;
+    }
+
+    65% {
+        padding-top: 21px;
+        padding-bottom: 21px;
+        padding-left: 28px;
+        padding-right: 28px;
+
+        font-size: 25px;
+    }
+
+    70% {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 27px;
+        padding-right: 27px;
+
+        font-size: 24px;
+    }
+
+    75% {
+        padding-top: 19px;
+        padding-bottom: 19px;
+        padding-left: 26px;
+        padding-right: 26px;
+
+        font-size: 23px;
+    }
+
+    80% {
+        padding-top: 18px;
+        padding-bottom: 18px;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        font-size: 22px;
+    }
+
+    85% {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        font-size: 21px;
+    }
+
+    90% {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 23px;
+        padding-right: 23px;
+
+        font-size: 20px;
+    }
+
+    95% {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 22px;
+        padding-right: 22px;
+
+        font-size: 19px;
+    }
+
+    to {
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-left: 21px;
+        padding-right: 21px;
+
+        font-size: 18px;
+    }
+}
+
+a {
+    animation-name: pulse-button;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}

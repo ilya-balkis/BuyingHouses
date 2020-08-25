@@ -1,0 +1,40 @@
+<nav th:fragment="header" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a class="navbar-brand d-flex" href="/buyingAccommodation">
+            <img width="40" src="/static/images/logo.svg" alt="">
+            <div class="d-flex pt-1">
+                <h4 id="Logo-1" class="mb-0">Buying</h4>
+                <h4 id="Logo-2" class="mb-0">Houses</h4>
+            </div>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCollapse" style="">
+            <ul class="navbar-nav mr-auto" id="header_navigation">
+                <li class="nav-item">
+                    <a class="nav-link" href="/buyingAccommodation">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addAccommodation">Add accommodation</a>
+                </li>
+                <li class="nav-item">
+                    <div th:if="${user.isAdmin()}">
+                        <a class="nav-link" href="/adminPanel">Admin panel</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="d-md-flex d-lg-flex d-xl-flex d-sm-inline">
+                <div id="profile">
+                    <a class="nav-link pl-0 text-warning" href="/profile">Profile</a>
+                </div>
+                <div class="pt-1">
+                    <form th:action="@{/logout}" method="post">
+                        <button class="btn btn-primary btn-sm" type="submit">Log out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+

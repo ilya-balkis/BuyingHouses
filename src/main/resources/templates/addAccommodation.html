@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>Add Accommodation Page</title>
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <main role="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <form th:action="@{/addAccommodation}" method="post" enctype="multipart/form-data">
+                        <label class="bottomLine">Name</label>
+                        <input class="form-control" th:classappend="${nameError} ? 'is-invalid' : ''"
+                               name="name" type="text" placeholder="Name" autofocus required>
+                        <div class="invalid-feedback">
+                            <span th:text="${nameError}"></span>
+                        </div>
+                        <label class="bottomLine">City</label>
+                        <input class="form-control" th:classappend="${cityError} ? 'is-invalid' : ''"
+                               name="city" type="text" placeholder="City" maxlength="255" autofocus required>
+                        <div class="invalid-feedback">
+                            <span th:text="${cityError}"></span>
+                        </div>
+                        <label class="bottomLine">Rooms</label>
+                        <input class="form-control" name="amountOfRooms" type="number" min="1" max="25" step="1" value="1" autofocus required>
+                        <label class="bottomLine">Square</label>
+                        <input class="form-control" name="square" type="number" min="1" max="50000" value="1.0" step="0.1" autofocus required>
+                        <label class="bottomLine">Cost</label>
+                        <div class="input-group mb-1">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input class="form-control" name="cost" type="number" min="1.0" value="1.0" step="0.01" autofocus required>
+                        </div>
+                        <label class="bottomLine">Type</label>
+                        <div class="custom-control custom-radio" th:each="type : ${types}">
+                            <input th:id="${type}" class="custom-control-input" name="type" type="radio" th:value="${type}" required>
+                            <label class="custom-control-label" th:for="${type}" th:text="${type}"></label><br>
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <div class="custom-control custom-checkbox">
+                                <input name="isFurniture" type="checkbox" class="custom-control-input" id="Furniture">
+                                <label class="custom-control-label" for="Furniture">Furnished</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox ml-4">
+                                <input name="isInternet" type="checkbox" class="custom-control-input" id="Internet">
+                                <label class="custom-control-label" for="Internet">Internet</label>
+                            </div>
+                        </div>
+
+                        <div class="input-group my-3">
+                            <div class="custom-file">
+                                <input name="file" accept="image/jpeg,image/png" type="file" class="custom-file-input" id="inputGroupFile" required>
+                                <label class="custom-file-label" for="inputGroupFile">Choose file</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-warning btn-block" name="add" type="submit">Add</button><br>
+                    </form>
+                </div>
+
+                <div class="col-md-8 d-none d-sm-none d-md-block d-lg-block d-xs-block">
+                    <img height="633px" width="100%" src="/static/images/town.svg" alt="">
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <div th:insert="blocks/scripts :: scripts"></div>
+
+</body>
+</html>

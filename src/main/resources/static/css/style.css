@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+body {
+    background-color: whitesmoke;
+    padding-top: 85px;
+}
+
+#Name {
+    font-size: 20px;
+}
+
+#Cost {
+    font-size: 18px;
+}
+
+#Logo-1 {
+    font-family: 'Fredoka One', cursive;
+    color: #ff7000;
+}
+
+#Logo-2 {
+    font-family: 'Fredoka One', cursive;
+    color: #de3a0a;
+}
+
+/*Firefox*/
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/*Other*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*add accommodation labels*/
+.bottomLine {
+    width: 100%;
+    border-bottom: 2px solid #fc8624;
+}
+
+.indent {
+    padding-top: 2px;
+}
+
+.error-main-text {
+    font-family: 'Cambria', sans-serif;
+    color: dimgrey;
+    font-size: 84px;
+}
+
+.error-text {
+    font-family: 'Cambria', sans-serif;
+    color: dimgrey;
+    font-size: 60px;
+}
+
+.error-indent {
+    margin-top: 14%;
+}
+
+/*card*/
+
+.color {
+    background-color: #de3a0a;
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    margin-top: 50px;
+    height: 200px;
+    width: 300px;
+}
+
+.BankCard {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    perspective: 1000px;
+}
+#front, #back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+#front img{
+    top: 0%;
+    height: 100%;
+}
+
+#back img {
+    top: 0%;
+    left: 0%;
+    height: 100%;
+}
+
+#front {
+    background-color: #dcdcdc;
+    box-shadow: 0 0 15px #e49626;
+}
+
+#back {
+    background-color: #dcdcdc;
+    transform: rotateY(180deg);
+}
+
+#arrow {
+    margin-top: 15px;
+}
+
+/*inputs*/
+
+#input-block {
+    width: 100%;
+}
+
+#input-1, #input-2, #input-3, #input-4 {
+    width: 60px;
+}
+
+#input-date {
+    top: 67%;
+    left: 43%;
+}
+
+#input-5, #input-6 {
+    width: 35px;
+    height: 23px;
+}
+
+#input-name {
+    top: 81%;
+    left: 2%;
+}
+
+#input-7 {
+    width: 140px;
+    height: 25px;
+}
+
+#cvc\/cvv {
+    top: 43%;
+    left: 72%;
+}
+
+#input-8 {
+    width: 75px;
+    height: 33px;
+}
+
+.center {
+    position: relative;
+    margin-left: 5px;
+}
+
+.block {
+    position: absolute;
+    top: 25%;
+}
+
+.profile-margin {
+    margin-top: 20px;
+}

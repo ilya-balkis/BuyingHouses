@@ -1,0 +1,78 @@
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#header_navigation li a').each(function () {
+                var location = window.location.href;
+                var link = this.href;
+                if (location == link) {
+                    $(this).addClass('active');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $('#inputGroupFile').on('change',function(){
+            var fileName = $(this).val();
+            if (fileName.length > 35) {
+                fileName = fileName.slice(0, 32) + "...";
+            }
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
+
+    <script>
+        $('#front').click(function (){
+            // let re = /^[0-9][0-9][0-9][0-9]$/;
+            // re.test($('#1').val())
+            if(!$('#input-1').is(":focus") &&
+                !$('#input-2').is(":focus") &&
+                !$('#input-3').is(":focus") &&
+                !$('#input-4').is(":focus") &&
+                !$('#input-5').is(":focus") &&
+                !$('#input-6').is(":focus") &&
+                !$('#input-7').is(":focus")) {
+
+                $('#front').css({
+                    "transform": "rotateY(180deg)"
+                })
+                $('#back').css({
+                    "transform": "rotateY(360deg)"
+                })
+                $('#arrow').css({
+                    "opacity": "0",
+                    "transition": "opacity .2s linear"
+                })
+            }
+        })
+
+        $('#back').click(function (){
+
+            if(!$('#input-8').is(":focus")) {
+                $('#front').css({
+                    "transform": "rotateY(0deg)"
+                })
+                $('#back').css({
+                    "transform": "rotateY(180deg)"
+                })
+                $('#arrow').css({
+                    "opacity": "1",
+                    "transition": "opacity .2s linear"
+                })
+            }
+        })
+    </script>
+
+    <script>
+        $(function(){
+            window.setTimeout(function(){
+                $('.message-alert').alert('close');
+            },3000);
+        });
+    </script>
+
+</div>

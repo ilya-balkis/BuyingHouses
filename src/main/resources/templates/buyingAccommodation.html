@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>Buying Houses</title>
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <main role="main">
+        <div class="container">
+            <div class="row">
+                <div th:each="accommodation : ${accommodations}" th:if="${!accommodation.isWaited()}" class="col-md-4 col-sm-6">
+                    <div class="card mb-4 shadow-sm">
+
+                        <div th:insert="blocks/accommodationInformation :: accommodationInformation"></div>
+
+                        <form class="px-2 pb-2" method="get" th:action="@{/payment/{id}(id=${accommodation.getId()})}">
+                            <input type="hidden" name="accommodationName" th:value="${accommodation.getName()}">
+                            <button class="btn btn-warning btn-block" type="submit" name="buy">Buy</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div th:insert="blocks/scripts :: scripts"></div>
+
+</body>
+</html>
