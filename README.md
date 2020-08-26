@@ -1,4 +1,4 @@
-This project is a buying houses web-app.
+This project is a buying houses web-app. Developed with https://github.com/Aliaksandr-Dubadzelau
 
 Step to start:
   1) Change email and password for mail sender. 
