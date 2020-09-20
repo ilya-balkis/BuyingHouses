@@ -14,6 +14,62 @@
 
     <main role="main">
         <div class="container">
+
+            <form th:action="@{/buyingAccommodation}" method="post">
+                <div class="row filter">
+                    <div class="col-md-9 d-flex">
+                        <div class="d-block">
+                            <label class="filter-input">Type: </label>
+                            <select name="type" class="form-control filter-input">
+                                <option>APARTMENT</option>
+                                <option>HOUSE</option>
+                                <option>DORMITORY</option>
+                                <option>OFFICE</option>
+                            </select>
+                        </div>
+
+                        <div class="d-block">
+                            <label class="filter-input">City: </label>
+                            <input name="city" class="form-control filter-input" placeholder="City">
+                        </div>
+
+                        <div class="d-block">
+                            <label class="filter-input">Rooms: </label>
+                            <input name="amountOfRooms" class="form-control filter-input" placeholder="Rooms">
+                        </div>
+
+                        <div class="d-block">
+                            <label class="filter-input">Square: </label>
+                            <input name="square" class="form-control filter-input" placeholder="Square">
+                        </div>
+
+                        <div class="d-block">
+                            <label class="filter-input">Furnished: </label>
+                            <select name="isFurniture" class="form-control filter-input">
+                                <option>YES</option>
+                                <option>NO</option>
+                            </select>
+                        </div>
+
+                        <div class="d-block">
+                            <label class="filter-input">Internet: </label>
+                            <select name="isInternet" class="form-control filter-input" >
+                                <option>YES</option>
+                                <option>NO</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="filter-center">
+                            <div class="filter-block">
+                                <button type="submit" class="btn btn-outline-secondary btn-block popup-open filter-button">Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <div class="row">
                 <div th:each="accommodation : ${accommodations}" th:if="${!accommodation.isWaited()}" class="col-md-4 col-sm-6">
                     <div class="card mb-4 shadow-sm">

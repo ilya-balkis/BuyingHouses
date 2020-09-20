@@ -172,3 +172,27 @@ input[type=number]::-webkit-outer-spin-button {
 .profile-margin {
     margin-top: 20px;
 }
+
+.filter {
+    margin-top: -10px;
+    margin-bottom: 10px;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    padding-bottom: 5px;
+}
+
+.filter-input {
+    width: 135px;
+    margin-left: 5px;
+}
+
+.filter-center {
+    width: 100%;
+    position: relative;
+    top: 45%;
+}
+
+.filter-block {
+    width: 100%;
+    position: absolute;
+}

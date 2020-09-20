@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
+
 @Controller
 @RequestMapping("/buyingAccommodation")
 public class BuyingAccommodationController {
@@ -32,6 +34,20 @@ public class BuyingAccommodationController {
         model.addAttribute("user", user);
         model.addAttribute("accommodations", accommodations);
 
+        return BUYING_ACCOMMODATION;
+    }
+    // ДОДЕЛАТЬ ВАЛИДАЦИЮ!!!!!!!!!!!!!!!!!
+    @PostMapping
+    public String postBuyingAccommodation(
+            @AuthenticationPrincipal User user,
+            String isInternet,
+            String isFurniture,
+            Accommodation accommodation,
+            Model model) {
+        Iterable<Accommodation> accommodations = accommodationService.findAccommodations();
+        accommodationService.filterAccommodation(accommodations, accommodation, isFurniture, isInternet);
+        model.addAttribute("user", user);
+        model.addAttribute("accommodations", accommodations);
         return BUYING_ACCOMMODATION;
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 @Service
 public class AccommodationService {
@@ -70,4 +72,110 @@ public class AccommodationService {
         accommodation.setWaited(WAITED);
     }
 
+    public void filterAccommodation(
+            Iterable<Accommodation> accommodations, Accommodation accommodation,
+            String isFurniture, String isInternet) {
+
+        boolean furniture = false;
+        boolean internet = false;
+
+        if (isFurniture.equals("YES")) {
+            furniture = true;
+        }
+
+        if (isInternet.equals("YES")) {
+            internet = true;
+        }
+
+        weedOutByType(accommodations, accommodation.getType());
+
+        if (!accommodation.getCity().isEmpty()) {
+            weedOutByCity(accommodations, accommodation.getCity());
+        }
+
+        if (accommodation.getAmountOfRooms() != null) {
+            weedOutByAmountOfRooms(accommodations, accommodation.getAmountOfRooms());
+        }
+
+        if (accommodation.getSquare() != null) {
+            weedOutBySquare(accommodations, accommodation.getSquare());
+        }
+
+        weedOutByFurniture(accommodations, furniture);
+
+        weedOutByInternet(accommodations, internet);
+
+    }
+
+    private void weedOutByType(
+            Iterable<Accommodation> accommodations, String type) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (!accommodation.getType().equals(type)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private void weedOutByCity(
+            Iterable<Accommodation> accommodations, String city) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (!accommodation.getCity().toLowerCase().equals(city.toLowerCase())) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private void weedOutByAmountOfRooms(
+            Iterable<Accommodation> accommodations, int amountOfRooms) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (accommodation.getAmountOfRooms() != amountOfRooms) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private void weedOutBySquare(
+            Iterable<Accommodation> accommodations, float square) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (accommodation.getSquare() != square) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private void weedOutByFurniture(
+            Iterable<Accommodation> accommodations, boolean furniture) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (accommodation.isFurniture() != furniture) {
+                iterator.remove();
+            }
+        }
+    }
+
+    private void weedOutByInternet(
+            Iterable<Accommodation> accommodations, boolean internet) {
+
+        Iterator<Accommodation> iterator = accommodations.iterator();
+        while (iterator.hasNext()) {
+            Accommodation accommodation = iterator.next();
+            if (accommodation.isInternet() != internet) {
+                iterator.remove();
+            }
+        }
+    }
 }
