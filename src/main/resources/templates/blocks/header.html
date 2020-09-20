@@ -23,6 +23,11 @@
                         <a class="nav-link" href="/adminPanel">Admin panel</a>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <div th:if="${user.isAdmin()}">
+                        <a class="nav-link" href="/deletePanel">Delete panel</a>
+                    </div>
+                </li>
             </ul>
             <div class="d-md-flex d-lg-flex d-xl-flex d-sm-inline">
                 <div id="profile">

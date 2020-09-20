@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class AccommodationService {
@@ -42,6 +44,14 @@ public class AccommodationService {
 
     public Iterable<Accommodation> findAccommodations() {
         return accommodationRepository.findAll();
+    }
+
+    public List<Accommodation> findAccommodation(User user) {
+        return accommodationRepository.findByOwner(user);
+    }
+
+    public void updateAccommodationCost(BigDecimal cost, String name){
+        accommodationRepository.updateCost(cost, name);
     }
 
     public Accommodation findAccommodation(String accommodationName) {

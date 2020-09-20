@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>Delete Panel Page</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div th:each="current_user : ${users}" th:if="${!current_user.getUserName().equals(user.getUserName())}" class="col-md-4 col-sm-6">
+                <div class="card mb-4 shadow-sm">
+
+                    <div th:insert="blocks/userInformation :: userInformation"></div>
+
+                    <div class="indent"></div>
+
+                    <form method="post" th:action="@{/deletePanel}">
+                        <div class="ml-2 mr-2 mb-2">
+                            <input type="hidden" name="userName" th:value="${current_user.getUserName()}">
+                            <input type="hidden" name="userId" th:value="${current_user.getId()}">
+                            <button class="btn btn-danger btn-block" type="submit" name="delete">Delete</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:insert="blocks/scripts :: scripts"></div>
+</body>
+</html>

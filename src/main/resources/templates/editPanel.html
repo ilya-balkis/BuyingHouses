@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="shortcut icon" href="/static/favicon/favicon.ico" type="image/x-icon">
+    <title>Editor Panel Page</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"></header>
+
+<main role="main">
+    <div class="container">
+        <form method="post" th:action="@{/editPanel/{id}(id=${accommodation.getId()})}" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-md-4"></div>
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img height="200" width="100%" th:src="@{/img/{id}(id=${accommodation.getFileName()})}" alt="">
+                        <div class="p-2">
+                            <div class="d-flex justify-content-center mb-2">
+                                <table>
+                                    <tr class="text-center">
+                                        <td colspan="2"><b id="Name" class="text-uppercase"
+                                                           th:text="${accommodation.getName()}"></b></td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td colspan="2">
+                                            <div class="input-group mb-1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                </div>
+                                                <input class="form-control" name="cost" type="number" min="1.0" step="0.01" autofocus required th:placeholder="${accommodation.getCost()}">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="d-inline text-muted">Type: </p><span class="mr-2"
+                                                                                           th:text="${accommodation.getType()}"></span>
+                                        </td>
+                                        <td><p class="d-inline text-muted">Square: </p><span
+                                                th:text="${accommodation.getSquare()}"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="d-inline text-muted">City: </p><span class="mr-2"
+                                                                                           th:text="${accommodation.getCity()}"></span>
+                                        </td>
+                                        <td><p class="d-inline text-muted">Furnished: </p>
+                                            <img th:if="${accommodation.isFurniture()} == true" width="17"
+                                                 src="/static/images/tick.svg" alt="">
+                                            <img th:if="${accommodation.isFurniture()} == false" width="17"
+                                                 src="/static/images/cross.svg" alt="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><p class="d-inline text-muted">Rooms: </p><span class="mr-2"
+                                                                                            th:text="${accommodation.getAmountOfRooms()}"></span>
+                                        </td>
+                                        <td><p class="d-inline text-muted">Internet: </p>
+                                            <img th:if="${accommodation.isInternet()} == true" width="17"
+                                                 src="/static/images/tick.svg" alt="">
+                                            <img th:if="${accommodation.isInternet()} == false" width="17"
+                                                 src="/static/images/cross.svg" alt="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><p class="d-inline text-muted">Owner: </p><span
+                                                th:text="${accommodation.getOwner().getUserName()}"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><p class="d-inline text-muted">E-mail: </p><span
+                                                th:text="${accommodation.getOwner().getEmail()}"></span></td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div>
+                                <input type="hidden" name="accommodationName" th:value="${accommodation.getName()}">
+                                <button class="btn btn-warning btn-block" type="submit" name="buy">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+
+<div th:insert="blocks/scripts :: scripts"></div>
+</body>
+</html>

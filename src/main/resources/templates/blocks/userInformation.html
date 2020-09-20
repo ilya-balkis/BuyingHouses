@@ -1,0 +1,24 @@
+<div th:fragment="userInformation">
+
+    <div class="p-2">
+        <div class="d-flex justify-content-center mb-2">
+            <table>
+                <tr class="text-center">
+                    <td colspan="2"><b id="Name" class="text-uppercase" th:text="${current_user.getUserName()}"></b></td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">E-mail: </p><span th:text="${current_user.getEmail()}"></span></td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">Roles: </p><span th:text="${current_user.getRoles()}"></span></td>
+                </tr>
+                <tr>
+                    <td><p class="d-inline text-muted">Activation: </p>
+                        <img th:if="${current_user.isActive()} == true" width="17" src="/static/images/tick.svg" alt="">
+                        <img th:if="${current_user.isActive()} == false" width="17" src="/static/images/cross.svg" alt="">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
